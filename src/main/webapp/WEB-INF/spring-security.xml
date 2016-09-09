@@ -33,10 +33,12 @@ http://www.springframework.org/schema/security/spring-security.xsd">
         
     <security:intercept-url pattern="/addtoCart/**"   access="hasRole('ROLE_USER')" />
     <security:intercept-url pattern="/viewcart/**"   access="hasRole('ROLE_USER')" />
+    <security:intercept-url pattern="/Pay/**"  access="hasRole('ROLE_USER')" />
+		<security:intercept-url pattern="/placeorder/**" access="hasRole('ROLE_USER')" />
      
     <security:form-login login-page="/login"
         default-target-url="/" login-processing-url="/perform_login"
-        authentication-failure-url="/loginError" 
+        authentication-failure-url="/login" 
         authentication-success-forward-url="/login_session_attributes" />
         
     <security:logout

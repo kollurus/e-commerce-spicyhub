@@ -99,8 +99,14 @@ public class CartDAOImpl implements CartDAO {
 	}
 	@Transactional
 	public void pay(int userId) {
-		String hql="update Cart set status='P' where userid="+userId;	
+		String hql="update Cart set status='P' where userid="+userId;
+		@SuppressWarnings("rawtypes")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.executeUpdate();
+	}
+	@Override
+	public Cart getitem(int prodId, int userId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

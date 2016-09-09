@@ -12,7 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body style="padding-top:100px">
-<div id="cart">
+<div id="ViewCart">
 <div class="container">
 	<div class="row">
 	<div class="col-xs-2"></div>
@@ -21,7 +21,7 @@
 				<div class="panel-heading">
 					<div class="panel-title">
 						<div class="row">
-							<div class="col-xs-6">
+							<div class="col-xs-3">
 								<h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
 							</div>
 						</div>
@@ -49,6 +49,14 @@
 							</div>	
 					</div>
 					<hr>
+				<c:if test="${!empty EmptyCart}">
+				<div style=" display:table-cell; vertical-align:middle; text-align:center">
+				
+				<img width="50%"  alt="Empty Cart"  src="<c:url value="/resources/images/emptycart.jpg"></c:url>">
+				
+					<%-- <img width="400px" height="215px" alt="Empty Cart"  src="<c:url value="/resources/images/og.jpg"></c:url>"> --%>
+					</div>
+				</c:if> 
 				<c:if test="${!empty CartList}">
 				<c:forEach items="${CartList}" var="cart">
 					<div class="row">

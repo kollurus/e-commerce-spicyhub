@@ -1,6 +1,7 @@
 package com.niit.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -13,7 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class Supplier {
 	@Id
-	private String id;
+	@GeneratedValue
+	private int id;
 
 	private String name;
 
@@ -30,7 +32,7 @@ public class Supplier {
 		this.image = image;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -42,7 +44,7 @@ public class Supplier {
 		return address;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

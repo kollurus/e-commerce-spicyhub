@@ -25,7 +25,7 @@ public class CartController {
 	
 	
 	@RequestMapping("addtoCart/{userId}/{id}")
-	public String addToCart(@PathVariable("id") String Productid,@PathVariable("userId") int userId,@RequestParam("quantity") int q,HttpSession session)throws Exception 
+	public String addToCart(@PathVariable("id") int Productid,@PathVariable("userId") int userId,@RequestParam("quantity") int q,HttpSession session)throws Exception 
 	{
 		if (cartDAO.getitem(Productid, userId)!= null ){
 			Cart item=cartDAO.getitem(Productid, userId);
@@ -77,7 +77,16 @@ public class CartController {
 	{
 		int userId=(int)session.getAttribute("userId");
 		model.addAttribute("CartList",cartDAO.get(userId));
-		model.addAttribute("CartPrice",cartDAO.CartPrice(userId));
+		
+		if (cartDAO.cartsize((int) session.getAttribute("userId")) != 0) {
+			model.addAttribute("CartPrice", cartDAO.CartPrice(userId));
+		} 
+		else 
+		{
+			model.addAttribute("EmptyCart", "true");
+		}
+		
+		
 		model.addAttribute("IfViewCartClicked", "true");
 		model.addAttribute("HideOthers","true");
 		return "welcome";
@@ -88,14 +97,14 @@ public class CartController {
 	{
 		model.addAttribute("IfPaymentClicked", "true");
 		model.addAttribute("HideOthers","true");
-		return "Payment";
+		return "welcome";
 	}
 
-	/*@RequestMapping("pay")
+	@RequestMapping("pay")
 	public String payment(HttpSession session)
 	{
 		cartDAO.pay((int)session.getAttribute("userId"));
 		
 		return "redirect:/welcome";
-	}	*/
+	}	
 }

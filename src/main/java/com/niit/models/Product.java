@@ -1,6 +1,7 @@
 package com.niit.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -14,26 +15,27 @@ import org.springframework.web.multipart.MultipartFile;
 public class Product {
 	
 	@Id
-	private String id;
+	@GeneratedValue
+	private int id;
 	private String name;
 
 	private String description;
 
-	private long price;
+	private int price;
 	
-	private String supplierid;
+	private String supplier;
 	
-	private String categoryid;
+	private String category;
 	
 	@Transient
 	private MultipartFile image;
 
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -53,28 +55,28 @@ public class Product {
 		this.description = description;
 	}
 
-	public long getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(long price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
-	public String getSupplierid() {
-		return supplierid;
+	public String getSupplier() {
+		return supplier;
 	}
 
-	public void setSupplierid(String supplierid) {
-		this.supplierid = supplierid;
+	public void setSupplier(String supplier) {
+		this.supplier = supplier;
 	}
 
-	public String getCategoryid() {
-		return categoryid;
+	public String getCategory() {
+		return category;
 	}
 
-	public void setCategoryid(String categoryid) {
-		this.categoryid = categoryid;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public MultipartFile getImage() {

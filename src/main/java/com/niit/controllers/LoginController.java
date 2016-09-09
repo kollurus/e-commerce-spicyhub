@@ -40,7 +40,7 @@ public class LoginController {
 		/*mv.addAttribute("categoryList", categoryDAO.list());
 		mv.addAttribute("productList", productDAO.list());*/
 		mv.addAttribute("IfLoginClicked", "true");
-		mv.addAttribute("HideOthers","true");
+		//mv.addAttribute("HideOthers","true");//
 		return "welcome";
 	}
 
@@ -50,7 +50,7 @@ public class LoginController {
 	mv.addAttribute("categoryList", categoryDAO.list());
 		mv.addAttribute("productList", productDAO.list());
 		mv.addAttribute("IfRegisterClicked", "true");
-		mv.addAttribute("HideOthers","true");
+		//mv.addAttribute("HideOthers","true");//
 		return "welcome";
 	}
 
@@ -81,13 +81,13 @@ public class LoginController {
 		     if (authority.getAuthority().equals(role)) 
 		     {
 		    	 session.setAttribute("UserLoggedIn", "true");
-		    	 session.setAttribute("cartsize",cartDAO.cartsize((int)session.getAttribute("userId")));
+		    	// session.setAttribute("cartsize",cartDAO.cartsize((int)session.getAttribute("userId")));//
 		     }
 		     else 
 		     {
 		    	 session.setAttribute("Administrator", "true");
-		    	 model.addAttribute("product",  new Product());
-		    	 model.addAttribute("ProductPageClicked", "true");
+		    	// model.addAttribute("product",  new Product());
+		    	// model.addAttribute("ProductPageClicked", "true");//
 			 }
 		}
 		return "welcome";
@@ -117,11 +117,11 @@ public class LoginController {
 		session.invalidate();
 		return "redirect:/";
 	}
-	@RequestMapping(value="pay")
+	/*@RequestMapping(value="pay")
 	public String pay(HttpSession session)
 	{
 		cartDAO.pay(((int)session.getAttribute("userId")));
 		session.setAttribute("cartsize",cartDAO.cartsize((int)session.getAttribute("userId")));
 		return "redirect:/welcome";
-	}
+	}*/
 }

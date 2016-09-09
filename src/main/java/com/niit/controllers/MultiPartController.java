@@ -33,7 +33,7 @@ public class MultiPartController {
 					}
 					System.out.println("File Uploaded");
 					System.out.println(path+filename);
-					file.transferTo(new File(path));
+					//file.transferTo(new File(path))//;
 				}
 				catch (Exception e)
 				{

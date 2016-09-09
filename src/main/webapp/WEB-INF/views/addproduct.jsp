@@ -44,19 +44,19 @@ th {
 		<h1>PRODUCT MODULE</h1>
 		
 		
-	<li class="active" ><a href="perform_logout"
-							class="w3-hover-none"><span class="glyphicon glyphicon-log-out"></span></a></li>
+	<!--  <li class="active" ><a href="perform_logout"
+							class="w3-hover-none"><span class="glyphicon glyphicon-log-out"></span></a></li>-->
 		<form:form action="${addAction}" commandName="product" enctype="multipart/form-data" method="post">
 
 			<table border="1" cellpadding="10" cellspacing="10" align="center">
 			<thead>
 					<tr>
-						<td><form:label path="id">
+					<!--  	<td><form:label path="id">
 								<spring:message text="Id" />
-							</form:label></td>
+							</form:label></td> -->
 						<c:choose>
 							<c:when test="${!empty product.id}">
-								<td><form:input path="id" readonly="true" /></td>
+							<!--  	<td><form:input path="id" readonly="true" /></td> -->
 							</c:when>
 
 							<c:otherwise>
@@ -82,22 +82,22 @@ th {
 						<td><form:input path="price" required="true" /></td>
 					</tr>
 					<tr>
-						<td><form:label path="supplierid">
+						<td><form:label path="supplier">
 								<spring:message text="Supplier" />
 							</form:label></td>
-						<td><form:select path="supplierid" required="true">
+						<td><form:select path="supplier" required="true">
 								<c:forEach items="${supplierList}" var="supplier">
-									<form:option value="${supplier.id}">${supplier.name}</form:option>
+									<form:option value="${supplier.name}">${supplier.name}</form:option>
 								</c:forEach>
 							</form:select></td>
 					</tr>
 					<tr>
 						<td><form:label path="categoryid">
-								<spring:message text="Category" />
+								<spring:message text="Categoryid" />
 							</form:label></td>
 						<td><form:select path="categoryid" required="true">
 								<c:forEach items="${categoryList}" var="category">
-									<form:option value="${category.id}">${category.name}</form:option>
+									<form:option value="${categoryid.id}">${categoryid.name}</form:option>
 								</c:forEach>
 							</form:select></td>
 					</tr>
@@ -129,8 +129,8 @@ th {
 						<th>Product Name</th>
 						<th>Product Description</th>
 						<th>Product Price</th>
-						<th>Supplier Id</th>
-						<th>Product Id</th>
+						<th>Supplier</th>
+						<th>Category</th>
 						<th>Edit</th>
 						<th>Delete</th>
 					</tr>
@@ -140,7 +140,7 @@ th {
 							<td>${product.name}</td>
 							<td>${product.description}</td>
 							<td>${product.price}</td>
-							<td>${product.supplierid}</td>
+							<td>${product.supplier}</td>
 							<td>${product.categoryid}</td>
 							<td>
 								<form action="editproduct/${product.id}" method="post">

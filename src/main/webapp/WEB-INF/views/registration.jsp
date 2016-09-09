@@ -16,6 +16,15 @@
 		<section class="container">
 		<div class="container-page">
 			<div class="col-md-6">
+			<c:choose>
+				<c:when test="${!empty SuccessMessage}">
+					<td colspan="2">
+						<div class="alert alert-success fade in">
+							<a href="login" class="close" data-dismiss="alert" aria-label="close">&times;</a>${SuccessMessage}
+						</div>
+					</td>
+				</c:when>
+			</c:choose>
 				<c:url var="addAction" value="adduser"></c:url>
 				<form:form action="${addAction}" commandName="userDetails"
 					method="post">

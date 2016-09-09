@@ -156,7 +156,7 @@ div.center {
 						<div class="center">
 							<ul class="pagination">
 								<c:forEach items="${categoryList}" var="category">
-									<li><a href="${category.name}" class="w3-hover-none"><i
+									<li><a href="view/${category.id}" class="w3-hover-none"><i
 											class="fa fa-list-alt" aria-hidden="true"></i>
 											${category.name}</a></li>
 								</c:forEach>
@@ -194,16 +194,16 @@ div.center {
 			<c:import url="/WEB-INF/views/cart.jsp">
 			</c:import>
 		</c:when>
-
-		<c:when test="${IfPaymentClicked}">
-			<c:import url="/WEB-INF/views/payment.jsp">
+		<c:when test="${IndividualItemClicked}">
+			<c:import url="/WEB-INF/views/IndividualItem.jsp">
 			</c:import>
 		</c:when>
-	</c:choose>
 
-
-	<!-- Category List End -->
-	<c:choose>
+		<c:when test="${IfPaymentClicked}">
+			<c:import url="/WEB-INF/views/Payment.jsp">
+			</c:import>
+		</c:when>
+	
 		<c:when test="${IfLoginClicked}">
 			<c:import url="/WEB-INF/views/login.jsp">
 			</c:import>
@@ -211,6 +211,10 @@ div.center {
 
 		<c:when test="${IfRegisterClicked}">
 			<c:import url="/WEB-INF/views/registration.jsp">
+			</c:import>
+		</c:when>
+		<c:when test="${ViewCategoryClicked}">
+			<c:import url="/WEB-INF/views/viewitem.jsp">
 			</c:import>
 		</c:when>
 	</c:choose>
@@ -320,7 +324,7 @@ div.center {
 
 	<!-- ##################################################################################################### -->
 
-
+<c:if test="${empty HideOthers}">
 	<c:choose>
 		<c:when test="${!Administrator}">
 			<c:if test="${!empty productList}">
@@ -370,6 +374,7 @@ div.center {
 			</c:if>
 		</c:when>
 	</c:choose>
+	</c:if>
 
 	<!--############################################### Product List End ##############################################-->
 

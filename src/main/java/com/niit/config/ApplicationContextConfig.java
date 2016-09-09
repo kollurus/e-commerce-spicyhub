@@ -42,7 +42,7 @@ public class ApplicationContextConfig {
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");
-		dataSource.setUrl("jdbc:h2:~/project");
+		dataSource.setUrl("jdbc:h2:~/spicy");
 		dataSource.setUsername("sa");
 		dataSource.setPassword("sa");
 		System.out.println("Datasource");
